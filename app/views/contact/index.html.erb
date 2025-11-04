@@ -1,0 +1,256 @@
+<div class="feedback-wrapper">
+  <div class="theme-toggle">
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="feedback-card">
+    <h1 class="form-title">Feedback Form</h1>
+    <p class="subtitle">We value your thoughts — share your feedback below!</p>
+
+    <%= form_with url: "#", method: :post, local: true, class: "feedback-form" do %>
+      <div class="form-row">
+        <div class="input-icon">
+          <i class="fa-solid fa-user"></i>
+          <%= text_field_tag :first_name, nil, class: "form-control", placeholder: "First Name" %>
+        </div>
+
+        <div class="input-icon">
+          <i class="fa-solid fa-user"></i>
+          <%= text_field_tag :last_name, nil, class: "form-control", placeholder: "Last Name" %>
+        </div>
+      </div>
+
+      <div class="input-icon">
+        <i class="fa-solid fa-envelope"></i>
+        <%= email_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
+      </div>
+
+      <div class="input-icon">
+        <i class="fa-solid fa-phone"></i>
+        <%= telephone_field_tag :phone, nil, class: "form-control", placeholder: "Phone" %>
+      </div>
+
+      <div class="input-icon">
+        <i class="fa-solid fa-pen"></i>
+        <%= text_field_tag :title, nil, class: "form-control", placeholder: "Feedback Title" %>
+      </div>
+
+      <div class="input-icon textarea-wrapper">
+        <i class="fa-solid fa-comment-dots"></i>
+        <%= text_area_tag :description, nil, class: "form-control textarea", placeholder: "Write your feedback here..." %>
+      </div>
+
+      <%= submit_tag "Send Feedback", class: "submit-btn" %>
+    <% end %>
+
+    <p class="contact-note">You can also call us at <span>333-33-33</span></p>
+  </div>
+</div>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<style>
+  :root {
+    --bg-color: #f9fafb;
+    --text-color: #1e293b;
+    --card-bg: #ffffff;
+    --input-bg: #f1f5f9;
+    --border-color: #d1d5db;
+    --button-bg: #1e293b;
+    --button-text: #ffffff;
+  }
+
+  body.dark-mode {
+    --bg-color: #0f172a;
+    --text-color: #e2e8f0;
+    --card-bg: #1e293b;
+    --input-bg: #334155;
+    --border-color: #475569;
+    --button-bg: #2563eb;
+    --button-text: #ffffff;
+  }
+
+  .feedback-wrapper {
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    transition: background 0.3s ease;
+  }
+
+  .feedback-card {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 40px 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 420px;
+    transition: all 0.4s ease;
+  }
+
+  .form-title {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--text-color);
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+  }
+
+  .feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .input-icon {
+    position: relative;
+  }
+
+  .input-icon i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+  }
+
+  .form-control {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 12px 14px 12px 36px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    outline: none;
+    transition: all 0.25s ease;
+  }
+
+  .form-control:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+  }
+
+  .textarea {
+    resize: none;
+    height: 100px;
+  }
+
+  .submit-btn {
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .submit-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .contact-note {
+    text-align: center;
+    margin-top: 15px;
+    color: #94a3b8;
+    font-size: 0.9rem;
+  }
+
+  .contact-note span {
+    color: #2563eb;
+    font-weight: 600;
+  }
+
+  /* Toggle Switch */
+  .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+
+  input:checked + .slider {
+    background-color: #2563eb;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(22px);
+  }
+
+  @media (max-width: 480px) {
+    .feedback-card {
+      padding: 25px;
+    }
+
+    .form-title {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("change", () => {
+      document.body.classList.toggle("dark-mode", toggle.checked);
+    });
+  });
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "SkillSwap" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- ✅ Navbar included only once -->
+    <%= render "shared/navbar" %>
+
+    <!-- ✅ Flash messages -->
+    <% if notice.present? %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <!-- ✅ Page content -->
+    <%= yield %>
+
+    <style>
+      /* Flash Messages */
+      .notice {
+        background-color: #22c55e;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 6px;
+        margin: 10px auto;
+        width: 80%;
+      }
+      .alert {
+        background-color: #ef4444;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-radius: 6px;
+        margin: 10px auto;
+        width: 80%;
+      }
+    </style>
+  </body>
+</html>

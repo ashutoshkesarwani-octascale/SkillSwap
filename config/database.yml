@@ -1,0 +1,17 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  username: octa
+  password: 12345
+  pool: 5
+
+development:
+  <<: *default
+  database: skillswap_development
+
+
+test:
+  <<: *default
+  database: skillswap_test
